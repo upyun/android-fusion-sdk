@@ -51,7 +51,6 @@ compile 'com.upyun:fusion-android-sdk:1.0.0'
 
 ```
 public static void upload(final Context context, final File file, final Map<String, Object> params, String apiKey, SignatureListener signatureListener, final UpCompleteListener completeListener, final UpProgressListener progressListener)
-
 ```
 参数说明：
 
