@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.upyun.library.common.Params;
+import com.upyun.library.common.UpConfig;
 import com.upyun.library.fusion.FusionUpload;
 import com.upyun.library.listener.SignatureListener;
 import com.upyun.library.listener.UpCompleteListener;
@@ -36,7 +37,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         //设置七牛token
         UpConfig.BACKUP_SERVER = UpConfig.QINIU;
-        UpConfig.TOKEN = "yH06mc5EzezWl2IassAdeRvD4rnpc6VchnHG01Ch:D4OoBkqRa4owQlAdA03ORxfBOyU=:eyJzY29wZSI6InN1bmRvd24iLCJkZWFkbGluZSI6MTQ5NTI2NjQ4Mn0=";
+        UpConfig.TOKEN = "*********";
         
         String savePath = System.currentTimeMillis()+"";
 //        File temp = new File(localPath);
