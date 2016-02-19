@@ -1,6 +1,6 @@
 # UPYUN Android Fusion SDK
 
-[![Build Status](https://travis-ci.org/upyun/android-sdk.svg?branch=master)](https://travis-ci.org/upyun/android-sdk)
+[![Build Status](https://travis-ci.org/upyun/android-fusion-sdk.svg?branch=master)](https://travis-ci.org/upyun/android-fusion-sdk)
 [ ![Download](https://api.bintray.com/packages/upyun/maven/fusion-android-sdk/images/download.svg) ](https://bintray.com/upyun/maven/fusion-android-sdk/_latestVersion)
 
 UPYUN Android Fusion SDK, 集成：
@@ -13,7 +13,7 @@ SDK在上传upyun服务器失败后会自动备份到第三方存储。
 
 ## 使用说明：
 
-1.直接[下载 JAR 包](http://jcenter.bintray.com/com/upyun/upyun-android-sdk/1.0.0/)复制进项目使用, SDK 依赖 [okhttp](http://square.github.io/okhttp/)和[阿里OSS SDK](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/preface.html?spm=5176.docoss/sdk/android-sdk/upload-object.6.276.j9dUjt)。
+1.直接[下载 JAR 包](http://jcenter.bintray.com/com/upyun/fusion-android-sdk/1.0.0/)复制进项目使用, SDK 依赖 [okhttp](http://square.github.io/okhttp/)和[阿里OSS SDK](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/preface.html?spm=5176.docoss/sdk/android-sdk/upload-object.6.276.j9dUjt)。
 
 2.SDK 已经上传 Jcenter，Android Studio 的用户可以直接在 gradle 中添加一条 dependencies:
 
@@ -22,7 +22,7 @@ compile 'com.upyun:fusion-android-sdk:1.0.0'
 ```
 ## 参数设置
 
-在 [UpConfig](http://gitlab.widget-inc.com/mingming.ye/android-fusionyun/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java) 中可以对 SDK 的一些参数进行配置。
+在 [UpConfig](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java) 中可以对 SDK 的一些参数进行配置。
 
 * `BLOCK_SIZE` 单个分块大小
 * `FILE_BOUND` 自动判断使用分块或者表单上传的文件大小界限
@@ -46,7 +46,7 @@ compile 'com.upyun:fusion-android-sdk:1.0.0'
 
 ## 上传接口
 
-> 详细示例请见 app module 下的 [MainActivity](http://gitlab.widget-inc.com/mingming.ye/android-fusionyun/blob/master/app/src/main/java/com/upyun/fusionyun/MainActivity.java)。
+> 详细示例请见 app module 下的 [MainActivity](https://github.com/upyun/android-fusionyun/blob/master/app/src/main/java/com/upyun/fusionyun/MainActivity.java)。
 
 
 ```
@@ -77,7 +77,7 @@ SignatureListener signatureListener=new SignatureListener() {
 将参数 `raw` 传给后台服务器和表单密匙连接后做一次 md5 运算返回结果。
 
 参数键值对中 `Params.BUCKET`（上传空间名）和 `Params.SAVE_KEY` 或 `Params.PATH`（保存路径，任选一个）为必选参数，
-其他可选参数见 [Params](https://github.com/upyun/android-sdk/blob/master/upyun-android-sdk/src/main/java/com/upyun/library/common/Params.java) 或者[官网 API 文档](http://docs.upyun.com/api/form_api/)。
+其他可选参数见 [Params](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/Params.java) 或者[官网 API 文档](http://docs.upyun.com/api/form_api/)。
 
 结束回调说明：
 
@@ -88,7 +88,7 @@ public interface UpCompleteListener {
 ```
 * `isSuccess` 成功或者失败
 * `result` 返回信息
-* `uploadType` 上传方式类型（共四种见 [UpConfig](http://gitlab.widget-inc.com/mingming.ye/android-fusionyun/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java)，不同上传类型返回信息不同）
+* `uploadType` 上传方式类型（共四种见 [UpConfig](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java)，不同上传类型返回信息不同）
 
 
 ## 测试
