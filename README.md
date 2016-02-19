@@ -46,7 +46,7 @@ compile 'com.upyun:fusion-android-sdk:1.0.0'
 
 ## 上传接口
 
-> 详细示例请见 app module 下的 [MainActivity](https://github.com/upyun/android-fusionyun/blob/master/app/src/main/java/com/upyun/fusionyun/MainActivity.java)。
+> 详细示例请见 app module 下的 [MainActivity](https://github.com/upyun/android-fusion-sdk/blob/master/app/src/main/java/com/upyun/fusionyun/MainActivity.java)。
 
 
 ```
