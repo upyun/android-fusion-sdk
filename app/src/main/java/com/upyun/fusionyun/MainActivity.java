@@ -38,8 +38,8 @@ public class MainActivity extends Activity {
         //设置七牛token
         UpConfig.BACKUP_SERVER = UpConfig.QINIU;
         UpConfig.TOKEN = "*********";
-        
-        String savePath = System.currentTimeMillis()+"";
+
+        String savePath = System.currentTimeMillis() + "";
 //        File temp = new File(localPath);
         File temp = null;
         try {
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
             }
         };
 
-        FusionUpload.upload(this, temp, paramsMap, KEY + 1, null, completeListener, progressListener);
+        FusionUpload.upload(this, temp, paramsMap, KEY, null, completeListener, progressListener);
     }
 
     private File getTempFile() throws IOException {
