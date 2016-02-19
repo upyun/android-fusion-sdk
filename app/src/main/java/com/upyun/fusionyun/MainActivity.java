@@ -34,6 +34,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //设置七牛token
+        UpConfig.BACKUP_SERVER = UpConfig.QINIU;
+        UpConfig.TOKEN = "yH06mc5EzezWl2IassAdeRvD4rnpc6VchnHG01Ch:D4OoBkqRa4owQlAdA03ORxfBOyU=:eyJzY29wZSI6InN1bmRvd24iLCJkZWFkbGluZSI6MTQ5NTI2NjQ4Mn0=";
+        
         String savePath = System.currentTimeMillis()+"";
 //        File temp = new File(localPath);
         File temp = null;
