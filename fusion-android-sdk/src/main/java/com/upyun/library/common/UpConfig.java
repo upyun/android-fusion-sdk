@@ -10,8 +10,8 @@ public class UpConfig {
     //默认过期时间1800s
     public static long EXPIRATION = 1800;
     //表单和分块host地址
-    public static final String FORM_HOST = "http://v0.api.upyun.com";
-    public static final String BLOCK_HOST = "http://m0.api.upyun.com";
+    public static String FORM_HOST = "http://v0.api.upyun.com";
+    public static String BLOCK_HOST = "http://m0.api.upyun.com";
     //失败重传次数
     public static final int RETRY_TIME = 2;
 
@@ -23,11 +23,14 @@ public class UpConfig {
     //空间名 用户可以直接先设置全局BUCKET，以后上传不用再传入BUCKET参数
     public static String BUCKET;
 
-    //上传方式类型
+    //返回标识
     public final static int UPYUN_FORM = 11;
     public final static int UPYUN_BLOCK = 12;
     public final static int QINIU = 13;
-    public final static int ALIYUN =14;
+    public final static int ALIYUN = 14;
+
+    //服务器异常或者网络错误，自动重传到第三方存储
+    public static final int UPYUN_ERROR = 10;
 
     //融合云相关配置
     //七牛token配置

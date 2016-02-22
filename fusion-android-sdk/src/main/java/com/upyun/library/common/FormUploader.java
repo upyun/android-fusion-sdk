@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class FormUploader implements Runnable {
 
-
     private UploadClient client;
     private File file;
     private String bucket;
@@ -58,8 +57,10 @@ public class FormUploader implements Runnable {
             String response = client.fromUpLoad(file, url, policy, signature, progressListener);
             completeListener.onComplete(true, response, UpConfig.UPYUN_FORM);
         } catch (IOException | RespException e) {
-            if (++retryTime > UpConfig.RETRY_TIME || (e instanceof RespException && ((RespException) e).code() / 100 != 5)) {
+            if (e instanceof RespException && ((RespException) e).code() / 100 != 5) {
                 completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_FORM);
+            } else if (++retryTime > UpConfig.RETRY_TIME) {
+                completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_ERROR);
             } else {
                 this.run();
             }

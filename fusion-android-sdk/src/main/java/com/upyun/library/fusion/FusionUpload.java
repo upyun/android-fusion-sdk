@@ -31,7 +31,7 @@ public class FusionUpload {
         UpCompleteListener reCompleteListener = new UpCompleteListener() {
             @Override
             public void onComplete(boolean isSuccess, String result, int uploadType) {
-                if (!isSuccess) {
+                if (!isSuccess && uploadType == UpConfig.UPYUN_ERROR) {
                     Log.w("upyunFailed", result);
                     switch (UpConfig.BACKUP_SERVER) {
                         case UpConfig.QINIU:

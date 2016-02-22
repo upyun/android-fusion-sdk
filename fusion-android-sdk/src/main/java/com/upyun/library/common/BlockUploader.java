@@ -123,8 +123,12 @@ public class BlockUploader implements Runnable {
                     break;
                 }
             } catch (IOException | RespException e) {
-                if (++retryTime > UpConfig.RETRY_TIME || (e instanceof RespException && ((RespException) e).code() / 100 != 5)) {
+                if (e instanceof RespException && ((RespException) e).code() / 100 != 5) {
                     completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_BLOCK);
+                } else if (++retryTime > UpConfig.RETRY_TIME) {
+                    completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_ERROR);
+                } else {
+                    initRequest();
                     break;
                 }
             } finally {
@@ -149,10 +153,12 @@ public class BlockUploader implements Runnable {
             progressListener.onRequestProgress(blockIndex.length, blockIndex.length);
             completeListener.onComplete(true, response, UpConfig.UPYUN_BLOCK);
         } catch (IOException | RespException e) {
-            if (++retryTime > UpConfig.RETRY_TIME || (e instanceof RespException && ((RespException) e).code() / 100 != 5)) {
+            if (e instanceof RespException && ((RespException) e).code() / 100 != 5) {
                 completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_BLOCK);
+            } else if (++retryTime > UpConfig.RETRY_TIME) {
+                completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_ERROR);
             } else {
-                megreRequest();
+                initRequest();
             }
         }
     }
@@ -176,8 +182,10 @@ public class BlockUploader implements Runnable {
                 blockUpload(0);
             }
         } catch (IOException | RespException e) {
-            if (++retryTime > UpConfig.RETRY_TIME || (e instanceof RespException && ((RespException) e).code() / 100 != 5)) {
+            if (e instanceof RespException && ((RespException) e).code() / 100 != 5) {
                 completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_BLOCK);
+            } else if (++retryTime > UpConfig.RETRY_TIME) {
+                completeListener.onComplete(false, e.toString(), UpConfig.UPYUN_ERROR);
             } else {
                 initRequest();
             }
@@ -189,7 +197,7 @@ public class BlockUploader implements Runnable {
 
     /**
      * 从文件中读取块
-     * <p/>
+     * <p>
      * index begin at 0
      *
      * @param index
