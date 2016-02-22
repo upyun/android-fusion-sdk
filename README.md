@@ -87,7 +87,7 @@ public interface UpCompleteListener {
 ```
 * `isSuccess` 成功或者失败
 * `result` 返回信息
-* `uploadType` 上传方式类型（共四种见 [UpConfig](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java)，不同上传类型返回信息不同）
+* `uploadType` 上传返回标识（见 [UpConfig](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/common/UpConfig.java)，不同上传类型返回信息不同）
 
 
 ## 测试
