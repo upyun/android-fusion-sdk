@@ -15,11 +15,11 @@ import java.io.OutputStream;
 import java.util.concurrent.CountDownLatch;
 
 public class QiniuResumeTest extends TestCase {
+    private static final String TAG = "QiniuResumeTest";
     public String TOKEN = "yH06mc5EzezWl2IassAdeRvD4rnpc6VchnHG01Ch:D4OoBkqRa4owQlAdA03ORxfBOyU=:eyJzY29wZSI6InN1bmRvd24iLCJkZWFkbGluZSI6MTQ5NTI2NjQ4Mn0=";
-    String savePath = System.currentTimeMillis() + "";
 
     public void testQiniuResume() throws Exception {
-
+        String savePath = System.currentTimeMillis() + "";
         final CountDownLatch latch = new CountDownLatch(1);
         File temp = File.createTempFile("upyun", "test");
         temp.deleteOnExit();
@@ -39,7 +39,7 @@ public class QiniuResumeTest extends TestCase {
         UpCompleteListener completeListener = new UpCompleteListener() {
             @Override
             public void onComplete(boolean isSuccess, String result, int uploadType) {
-                Log.e("lalala", isSuccess + result);
+                Log.e(TAG, isSuccess +":"+ result+":"+uploadType);
                 assertNotNull(isSuccess);
                 assertNotNull(result);
                 assertTrue(isSuccess);

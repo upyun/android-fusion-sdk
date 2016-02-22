@@ -19,10 +19,9 @@ public class AliyunUploadTest extends AndroidTestCase {
     public static final String accessKeyId = "7R6uaaS3RJtsjG2n";
     public static final String accessKeySecret = "YZBaLEvIqzT46vHEzkc43Rfrda3w4c";
     public static final String aliBucket = "sundown";
-    String savePath = System.currentTimeMillis() + "";
 
     public void testAliyunUpload() throws Exception {
-
+        String savePath = System.currentTimeMillis() + "";
         final CountDownLatch latch = new CountDownLatch(1);
 
         File temp = File.createTempFile("upyun", "test");
