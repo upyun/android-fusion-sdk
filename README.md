@@ -9,11 +9,11 @@ UPYUN Android Fusion SDK, 集成：
 - [七牛上传接口](http://developer.qiniu.com/docs/v6/api/overview/up/upload-models/)
 - [阿里上传接口](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/upload-object.html?spm=5176.docoss/sdk/android-sdk/preface.6.281.7RIWDc)
 
-SDK在上传upyun服务器失败后会自动备份到第三方存储。
+SDK在上传 upyun 服务器失败后会自动备份到第三方存储。
 
 ## 使用说明：
 
-1.直接[下载 JAR 包](http://jcenter.bintray.com/com/upyun/fusion-android-sdk/1.0.0/)复制进项目使用, SDK 依赖 [okhttp](http://square.github.io/okhttp/)和[阿里OSS SDK](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/preface.html?spm=5176.docoss/sdk/android-sdk/upload-object.6.276.j9dUjt)。
+1.直接[下载 JAR 包](http://jcenter.bintray.com/com/upyun/fusion-android-sdk/1.0.0/)复制进项目使用, SDK 依赖 [okhttp](http://square.github.io/okhttp/) 和 [阿里OSS SDK](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/preface.html?spm=5176.docoss/sdk/android-sdk/upload-object.6.276.j9dUjt)。
 
 2.SDK 已经上传 Jcenter，Android Studio 的用户可以直接在 gradle 中添加一条 dependencies:
 
