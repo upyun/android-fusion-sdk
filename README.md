@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/upyun/android-fusion-sdk.svg?branch=master)](https://travis-ci.org/upyun/android-fusion-sdk)
 [ ![Download](https://api.bintray.com/packages/upyun/maven/fusion-android-sdk/images/download.svg) ](https://bintray.com/upyun/maven/fusion-android-sdk/_latestVersion)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](License.md)
 
 UPYUN Android Fusion SDK, 集成：
 - [UPYUN HTTP FORM 接口](http://docs.upyun.com/api/form_api/)
