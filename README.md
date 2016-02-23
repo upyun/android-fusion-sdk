@@ -10,7 +10,7 @@ UPYUN Android Fusion SDK, 集成：
 - [七牛上传接口](http://developer.qiniu.com/docs/v6/api/overview/up/upload-models/)
 - [阿里上传接口](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/upload-object.html?spm=5176.docoss/sdk/android-sdk/preface.6.281.7RIWDc)
 
-SDK在上传 upyun 服务器失败后会自动备份到第三方存储。
+SDK在上传 UPYUN 服务器失败后会自动备份到第三方存储。
 
 ## 使用说明：
 
