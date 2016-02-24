@@ -4,13 +4,11 @@
 [ ![Download](https://api.bintray.com/packages/upyun/maven/fusion-android-sdk/images/download.svg) ](https://bintray.com/upyun/maven/fusion-android-sdk/_latestVersion)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](License.md)
 
-UPYUN Android Fusion SDK, 集成：
+UPYUN Android Fusion SDK, 提供融合云存储功能, 与 UPYUN 服务器连接不稳定时自动备份到第三方存储, 集成:
 - [UPYUN HTTP FORM 接口](http://docs.upyun.com/api/form_api/)
 - [UPYUN 分块上传接口](http://docs.upyun.com/api/multipart_upload/)
 - [七牛上传接口](http://developer.qiniu.com/docs/v6/api/overview/up/upload-models/)
 - [阿里上传接口](https://help.aliyun.com/document_detail/oss/sdk/android-sdk/upload-object.html?spm=5176.docoss/sdk/android-sdk/preface.6.281.7RIWDc)
-
-SDK在上传 UPYUN 服务器失败后会自动备份到第三方存储。
 
 ## 使用说明：
 
