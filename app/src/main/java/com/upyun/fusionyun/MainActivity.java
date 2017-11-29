@@ -2,15 +2,15 @@ package com.upyun.fusionyun;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.upyun.library.common.Params;
-import com.upyun.library.common.UpConfig;
+import com.upyun.library.fusion.FusionCompleteListener;
+import com.upyun.library.fusion.FusionConfig;
 import com.upyun.library.fusion.FusionUpload;
-import com.upyun.library.listener.SignatureListener;
-import com.upyun.library.listener.UpCompleteListener;
 import com.upyun.library.listener.UpProgressListener;
 import com.upyun.library.utils.UpYunUtils;
 
@@ -25,19 +25,29 @@ import java.util.Map;
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
-    public static String KEY = "******";
-    public static String SPACE = "******";
+    //空间名
+    public static String bucket = "formtest";
+    //操作员
+    public static String operator = "one";
+    //密码
+    public static String password = "*****";
     private ProgressBar uploadProgress;
     private TextView textView;
-//    private String localPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "test3.dmg";
+    private String localPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "text1.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //设置七牛token
-        UpConfig.BACKUP_SERVER = UpConfig.QINIU;
-        UpConfig.TOKEN = "*********";
+        FusionConfig.BACKUP_SERVER = FusionConfig.QINIU;
+        FusionConfig.QINIUTOKEN = "yH06mc5EzezWl2IassAdeRvD4rnpc6VchnHG01Ch:GcaVWdefi4uhPmFKNLc-D46aDCU=:eyJzY29wZSI6InN1bmRvd24iLCJkZWFkbGluZSI6MTUxMTk4MDg4N30=";
+        //设置 aliyun
+        FusionConfig.BACKUP_SERVER = FusionConfig.ALIYUN;
+        FusionConfig.ENDPOINT = "http://oss-cn-hangzhou.aliyuncs.com";
+        FusionConfig.ACCESSKEYID = "*******";
+        FusionConfig.ACCESSKEYSECRET = "*******";
+        FusionConfig.ALIBUCKET = "sundown";
 
         String savePath = System.currentTimeMillis() + "";
 //        File temp = new File(localPath);
@@ -53,7 +63,7 @@ public class MainActivity extends Activity {
         textView = (TextView) findViewById(R.id.tv_process);
         final Map<String, Object> paramsMap = new HashMap<>();
         //上传空间
-        paramsMap.put(Params.BUCKET, SPACE);
+        paramsMap.put(Params.BUCKET, bucket);
         //保存路径，任选其中一个
         paramsMap.put(Params.SAVE_KEY, savePath);
 //        paramsMap.put(Params.PATH, savePath);
@@ -63,29 +73,35 @@ public class MainActivity extends Activity {
         UpProgressListener progressListener = new UpProgressListener() {
             @Override
             public void onRequestProgress(final long bytesWrite, final long contentLength) {
-                uploadProgress.setProgress((int) ((100 * bytesWrite) / contentLength));
-                textView.setText((100 * bytesWrite) / contentLength + "%");
                 Log.e(TAG, bytesWrite + "::" + contentLength + "::" + (100 * bytesWrite) / contentLength + "%");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        uploadProgress.setProgress((int) ((100 * bytesWrite) / contentLength));
+                        textView.setText((100 * bytesWrite) / contentLength + "%");
+                    }
+                });
             }
         };
 
         //结束回调，不可为空
-        UpCompleteListener completeListener = new UpCompleteListener() {
+        FusionCompleteListener completeListener = new FusionCompleteListener() {
             @Override
-            public void onComplete(boolean isSuccess, String result, int uploadType) {
-                textView.setText(isSuccess + ":" + result + ":" + uploadType);
+            public void onComplete(final boolean isSuccess, final String result, final String uploadType) {
                 Log.e(TAG, isSuccess + ":" + result + ":" + uploadType);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText(isSuccess + ":" + result + ":" + uploadType);
+                    }
+                });
             }
         };
 
-        SignatureListener signatureListener = new SignatureListener() {
-            @Override
-            public String getSignature(String raw) {
-                return UpYunUtils.md5(raw + KEY);
-            }
-        };
-
-        FusionUpload.upload(this, temp, paramsMap, KEY, null, completeListener, progressListener);
+        //表单上传
+        FusionUpload.formUpload(this, temp, paramsMap, operator, UpYunUtils.md5(password), "/fusion/" + savePath, completeListener, progressListener);
+        //断点上传
+        FusionUpload.resumeUpload(this, temp, bucket, null, operator, UpYunUtils.md5(password), savePath, "/fusion/" + savePath, completeListener, progressListener);
     }
 
     private File getTempFile() throws IOException {
