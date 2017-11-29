@@ -27,3 +27,31 @@ dependencies {
     compile 'com.qiniu:qiniu-android-sdk:7.2.+'
     compile 'com.upyun:upyun-android-sdk:2.0.5'
 }
+
+
+//ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'fusion-android-sdk'
+//
+//    publishedGroupId = 'com.upyun'
+//    libraryName = 'fusion-android-sdk'
+//    artifact = 'fusion-android-sdk'
+//
+//    libraryDescription = 'A upload sdk fusion upyun and qiniu on Android'
+//
+//    siteUrl = 'https://github.com/upyun/android-sdk'
+//    gitUrl = 'https://github.com/upyun/android-sdk.git'
+//
+//    libraryVersion = '2.0.0'
+//
+//    developerId = 'yemingm'
+//    developerName = 'yemingm'
+//    developerEmail = 'yemingm@qq.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
+//
+//apply from: 'installv1.gradle'
+//apply from: 'bintrayv1.gradle'

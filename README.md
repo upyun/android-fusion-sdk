@@ -5,6 +5,17 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](License.md)
 
 UPYUN Android Fusion SDK, 提供融合云存储功能, 与 UPYUN 服务器连接不稳定时自动备份到第三方存储。
+
+## 使用说明：
+
+1.SDK 已经上传 Jcenter，Android Studio 的用户可以直接在 gradle 中添加一条 dependencies:
+
+```
+compile 'com.upyun:fusion-android-sdk:2.0.0'
+
+```
+2.下载源码使用。
+
 ## 参数设置
 
 在 [FusionConfig](https://github.com/upyun/android-fusion-sdk/blob/master/fusion-android-sdk/src/main/java/com/upyun/library/fusion/FusionConfig.java) 中可以对 SDK 的一些参数进行配置。
